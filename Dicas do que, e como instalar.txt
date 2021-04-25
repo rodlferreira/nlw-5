@@ -1,0 +1,15 @@
+/* Sempre lembrar de instalar o 'sass' devido a 
+facilidade da aplicacao das estilizacoes por meio de encadeamento
+a extencao eh: .scss */
+
+
+Tentar lembra de utilizar, sempre que possivel o 'rem' 1rem = 16px
+por questoes de acessibilidade
+
+Para lidar com datas, eh om utilizar a biblioteca 'date-fns'
+
+Para criar e instalar a aplicacao com typeScript:
+devemos rodar => 'yarn create next-app <Nome do projeto> --template typescript'
+
+
+

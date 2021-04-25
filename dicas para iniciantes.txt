@@ -1,0 +1,10 @@
+/* Na criacao de uma aplicacao web, a pasta pages,
+ somente pode ser criada dentro da pasta SRC  ou
+ na Raiz do projeto */
+
+ No React nao utilizamos 'class' e sim 'className' pq
+'class' eh uma palavra reservado do JavaScript
+
+Quando um componente deve ficar visivel em todas as telas, 
+ele deve ser incluido em '_app'
+

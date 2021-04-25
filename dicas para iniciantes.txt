@@ -8,3 +8,4 @@
 Quando um componente deve ficar visivel em todas as telas, 
 ele deve ser incluido em '_app'
 
+Final da aula 1 do NLW

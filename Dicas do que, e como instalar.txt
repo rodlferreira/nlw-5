@@ -11,5 +11,7 @@ Para lidar com datas, eh om utilizar a biblioteca 'date-fns'
 Para criar e instalar a aplicacao com typeScript:
 devemos rodar => 'yarn create next-app <Nome do projeto> --template typescript'
 
+Final da aula 1 do NLW
+
 
 

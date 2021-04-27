@@ -1,4 +1,4 @@
-//SSR -  Server Side Rendering
+//SSR -  Server Side Rendering => carrega de uma vez o site tornando o processo um pouco mais lento.
 //SSG - Static Site Generation => So funciona em producao
 import { GetStaticProps } from 'next';
 import Image from 'next/image';
@@ -10,12 +10,11 @@ import { api } from '../services/api';
 import { convertDurationToTimeString } from '../utils/convertDurationToTimeString';
 
 import styles from './home.module.scss';
-import { useContext } from 'react';
-import { PlayerContext, usePlayer } from '../contexts/PlayerContexts';
+import { usePlayer } from '../contexts/PlayerContexts';
 import Episode from './episodes/[slug]';
 
 type Episode = {
-
+//Tipagem dos episodios
   id: string;
   title: string;
   members: string;
@@ -53,10 +52,14 @@ export default function Home({latestEpisodes, allEpisodes}: HomeProps) {
         <h2>Ultimos lancamentos</h2>
 
         <ul>
-          {latestEpisodes.map((episode, index) => {
+          {latestEpisodes.map((episode, index) => { // o 'map' percorre algo e retorna algo, diferente do 'for each' que apenas percorre
             return (
-                <li key={episode.id}>
-                  <Image 
+              <li key={episode.id}> /*quando utilizamos o 'map' precisamos obrigatiamente 
+                                    no primeiro elemento logo apos o 'return', serve para 
+                                    que o React melhore a performance definindo o que cada 
+                                    item eh, podendo caso necessario, deletar um determinado
+                                    item sem que haja a necessidade de recarregar todos os dados.*/
+                  <Image            
                     width={192} 
                     height={192} 
                     src={episode.thumbnail} 
@@ -65,7 +68,7 @@ export default function Home({latestEpisodes, allEpisodes}: HomeProps) {
                   />
 
                   <div className={styles.episodeDetails}>
-                    <Link href={`/episodes/${episode.id}`}>
+                    <Link href={`/episodes/${episode.id}`}>//Comando responsavel por 'linkar' o 'Slug'
                     <a>{episode.title}</a>
                     </Link>
                     <p>{episode.members}</p>
@@ -141,8 +144,10 @@ export const getStaticProps: GetStaticProps = async () => {
     }
   })
 
-  const episodes = data.map(episode => {
-    return {
+ 
+  const episodes = data.map(episode => {  //o 'const' eh seguido de uma variavel
+    
+    return { //retorno dos objetos que estao relacionados a variavel
       id: episode.id,
       title: episode.title,
       thumbnail: episode.thumbnail,
@@ -154,7 +159,7 @@ export const getStaticProps: GetStaticProps = async () => {
     };
   })
 
-  const latestEpisodes = episodes.slice(0, 2);
+  const latestEpisodes = episodes.slice(0, 2); //o 'slice' separa os itens selecionados
   const allEpisodes = episodes.slice(2, episodes.length)  
 
   return {

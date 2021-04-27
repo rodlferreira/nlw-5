@@ -1,7 +1,7 @@
 .homepage {
     padding: 0 4rem;
     height: calc(100vh - 6.5rem);
-    overflow-y: scroll;    
+    overflow-y: scroll; //cria um 'scroll' dentro de um container   
 
 
     h2 {
@@ -55,7 +55,7 @@
                     font-size: 0.875rem;
                     margin-top: 0.5rem;
                     max-width: 70%;
-                    white-space: nowrap;
+                    white-space: nowrap;// 'nowrap' serve para nunca quebrar de linha
                     overflow: hidden;
                     text-overflow: ellipsis;
                 }

@@ -8,4 +8,9 @@
 Quando um componente deve ficar visivel em todas as telas, 
 ele deve ser incluido em '_app'
 
-Final da aula 1 do NLW
+Final da aula 2 do NLW
+
+Quando trabalhamos com paginas estatica de algo que pode ser dinamico, 
+que recebe parametro, que tem os 'colchetes' dentro dos arquivos, precisamos
+exportar mais um metodo chamado: 'getStaticPaths'(ele eh uma funcao assincrona)
+

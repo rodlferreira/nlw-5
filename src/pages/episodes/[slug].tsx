@@ -2,13 +2,18 @@ import { format, parseISO } from 'date-fns';
 import ptBR from 'date-fns/locale/pt-BR';
 import { convertDurationToTimeString } from '../../utils/convertDurationToTimeString';
 import { GetStaticPaths, GetStaticProps } from 'next';
-import { useRouter } from 'next/router'
 import { api } from '../../services/api';
 import styles from './episode.module.scss';
 import Image from 'next/image';
 import Head from 'next/head';
 import Link from 'next/link';
 import { usePlayer } from '../../contexts/PlayerContexts';
+
+
+/*Aqui eh feito o 'roteamento' que funciona, criando uma pasta dentro do 'pages' e 
+ um arquivo dentro dessa pasta, para que o Reaact possa dirercionar da forma correta.
+ A criacao do arquivo deve obedecer o seguinte formato: '[nome do arquivo].tsx' */
+
 
 type Episode = {
     id: string;
@@ -27,7 +32,8 @@ type EpisodeProps = {
 }
 
 export default function Episode({ episode }: EpisodeProps) {
-    const{ play } = usePlayer();
+    const{ play } = usePlayer();/* tambem chamado de 'Hook do React' todo metodo que comeca 
+                                    que com 'use' e s'o pode ser usado dentro de um componente.*/
     
     return (
         <div className={styles.episode}>
@@ -67,9 +73,9 @@ export default function Episode({ episode }: EpisodeProps) {
     )
 }
 
-export const getStaticPaths: GetStaticPaths = async () => {
+export const getStaticPaths: GetStaticPaths = async () => {//Metodo que trabalha paginas estaticas de algo que pode ser dinamico
     const { data } = await api.get('episodes', {
-        params: {
+        params: { 
             _limit: 2,
             _sort: 'published_at',
             _order: 'desc'
@@ -95,7 +101,7 @@ a grande vantagem do blocking eh a geracao de novas paginas conforme novas pesso
 }
 
 export const getStaticProps: GetStaticProps = async (ctx) => {
-    const { slug } = ctx.params;
+    const { slug } = ctx.params; //'params' eh de onde buscamos os dados
 
     const { data } = await api.get(`/episodes/${slug}`)
 

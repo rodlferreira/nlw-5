@@ -32,7 +32,7 @@ type EpisodeProps = {
 }
 
 export default function Episode({ episode }: EpisodeProps) {
-    const{ play } = usePlayer();/* tambem chamado de 'Hook do React' todo metodo que comeca 
+    const{ play } = usePlayer();   /* tambem chamado de 'Hook do React' todo metodo que comeca 
                                     que com 'use' e s'o pode ser usado dentro de um componente.*/
     
     return (
